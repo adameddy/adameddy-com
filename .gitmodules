@@ -1,0 +1,11 @@
+[submodule "hugo/themes/blowfish"]
+	path = hugo/themes/blowfish
+	url = https://github.com/nunocoracao/blowfish.git
+	branch = main
+[submodule "hugo/themes/nomad-tech"]
+	path = hugo/themes/nomad-tech
+	url = https://github.com/m03315/nomad-tech.git
+[submodule "hugo/themes/toha"]
+	path = hugo/themes/toha
+	url = https://github.com/hugo-themes/toha.git
+	branch = main
