@@ -9,3 +9,6 @@
 	path = hugo/themes/toha
 	url = https://github.com/hugo-themes/toha.git
 	branch = main
+[submodule "hugo/themes/mana"]
+	path = hugo/themes/mana
+	url = https://github.com/Livour/hugo-mana-theme.git
