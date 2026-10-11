@@ -1,0 +1,73 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  /*background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);*/
+  overflow-x: hidden;
+  font-family: sans-serif;
+  color: white;
+}
+
+/* Base setup for all star layers */
+#stars-small-1, #stars-small-2, #stars-medium, #stars-big {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: -1;
+}
+
+/* Layer 1: Small Stars (Slowest) */
+#stars-small-1 {
+  width: 1px;
+  height: 1px;
+  box-shadow: 
+    5vw 5vh #FFF, 27vw 5vh #FFF, 49vw 5vh #FFF, 71vw 5vh #FFF, 93vw 5vh #FFF,
+    5vw 35vh #FFF, 27vw 35vh #FFF, 49vw 35vh #FFF, 71vw 35vh #FFF, 93vw 35vh #FFF,
+    5vw 65vh #FFF, 27vw 65vh #FFF, 49vw 65vh #FFF, 71vw 65vh #FFF, 93vw 65vh #FFF,
+    5vw 95vh #FFF, 27vw 95vh #FFF, 49vw 95vh #FFF, 71vw 95vh #FFF, 93vw 95vh #FFF;
+  animation: moveStars 15s linear infinite;
+}
+
+#stars-small-2 {
+  width: 1px;
+  height: 1px;
+  box-shadow: 
+    5vw 5vh #FFF, 27vw 5vh #FFF, 49vw 5vh #FFF, 71vw 5vh #FFF, 93vw 5vh #FFF,
+    5vw 35vh #FFF, 27vw 35vh #FFF, 49vw 35vh #FFF, 71vw 35vh #FFF, 93vw 35vh #FFF,
+    5vw 65vh #FFF, 27vw 65vh #FFF, 49vw 65vh #FFF, 71vw 65vh #FFF, 93vw 65vh #FFF,
+    5vw 95vh #FFF, 27vw 95vh #FFF, 49vw 95vh #FFF, 71vw 95vh #FFF, 93vw 95vh #FFF;
+  animation: moveStars 15s linear 10s infinite;
+}
+
+/* Layer 2: Medium Stars (Medium Speed) */
+#stars-medium {
+  width: 2px;
+  height: 2px;
+  box-shadow: 
+    300px 500px #FFF, 700px 100px #FFF, 1100px 800px #FFF, 
+    500px 400px #FFF, 1400px 200px #FFF, 1000px 600px #FFF;
+  animation: moveStars 10s linear infinite;
+}
+
+/* Layer 3: Big Stars (Fastest) */
+#stars-big {
+  width: 3px;
+  height: 3px;
+  box-shadow: 
+    100px 800px #FFF, 500px 200px #FFF, 900px 400px #FFF, 
+    1300px 700px #FFF;
+  animation: moveStars 5s linear infinite;
+}
+
+/* Infinite Scrolling Animation */
+@keyframes moveStars {
+  from {
+    transform: translateY(100vh);
+  }
+  to {
+    transform: translateY(-100vh);
+  }
+}

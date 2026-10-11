@@ -1,0 +1,105 @@
+// SCSS Function to generate random stars via box-shadows
+@function generate-stars($count) {
+  $value: '#{random(2000)}px #{random(2000)}px #FFF';
+  
+  @for $i from 2 through $count {
+    $value: '#{$value}, #{random(5000)}px #{random(2000)}px #FFF';
+  }
+  
+  @return unquote($value);
+}
+
+// Cache the box-shadow maps for performance
+$stars-small-shadows:  generate-stars(300);
+$stars-medium-shadows: generate-stars(75);
+$stars-large-shadows:  generate-stars(30);
+
+// Base Page Setup
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  // background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+  //overflow: hidden; // Prevents scrollbars from the moving stars
+}
+
+.star-body {
+ position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+// Shared structural rules for all star layers
+%star-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  animation: moveStars linear infinite;
+  z-index: -1;
+}
+
+// Small Stars (Fastest moving, highest quantity)
+#stars-small {
+  @extend %star-layer;
+  width: 1px;
+  height: 1px;
+  box-shadow: $stars-small-shadows;
+  animation-duration: 150s;
+  
+  &::after {
+    content: " ";
+    position: absolute;
+    top: 2000px; // Creates a seamless loop mirror
+    width: 1px;
+    height: 1px;
+    box-shadow: $stars-small-shadows;
+  }
+}
+
+// Medium Stars (Medium speed)
+#stars-medium {
+  @extend %star-layer;
+  width: 2px;
+  height: 2px;
+  box-shadow: $stars-medium-shadows;
+  animation-duration: 100s;
+  
+  &::after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 2px;
+    height: 2px;
+    box-shadow: $stars-medium-shadows;
+  }
+}
+
+// Large Stars (Slowest moving, creates depth)
+#stars-large {
+  @extend %star-layer;
+  width: 3px;
+  height: 3px;
+  box-shadow: $stars-large-shadows;
+  animation-duration: 50s;
+  
+  &::after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 3px;
+    height: 3px;
+    box-shadow: $stars-large-shadows;
+  }
+}
+
+// Animation to smoothly scroll the star fields upward
+@keyframes moveStars {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}
