@@ -30,6 +30,23 @@ html, body {
   z-index: -1;
 }
 
+// Scroll-driven dim overlay (home page only).
+// js/bg-dim.js writes --bg-dim-progress (0 -> 1); the overlay fades the star
+// field and nebula gradient down towards the deep background as you scroll.
+// --bg-dim-max keeps a faint glow of stars visible at full scroll.
+.bg-dim {
+  --bg-dim-max: 0.85;
+  --bg-dim-progress: 0;
+
+  position: fixed;
+  inset: 0;
+  // Above the star field (-1) and the noise overlay, below page content (1)
+  z-index: 0;
+  background-color: var(--bg-deep);
+  opacity: calc(var(--bg-dim-progress) * var(--bg-dim-max));
+  pointer-events: none;
+}
+
 // Shared structural rules for all star layers
 %star-layer {
   position: absolute;

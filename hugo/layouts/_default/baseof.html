@@ -7,6 +7,13 @@
     <a href="#main-content" class="skip-to-main" aria-label="{{ i18n "skipToMain" }}"
       >{{ i18n "skipToMain" }}</a
     >
+
+    {{ if eq .Kind "home" }}
+      {{ partial "stars.html" . }}
+      <!-- Darkens the star field and nebula gradient as the visitor scrolls down -->
+      <div class="bg-dim" aria-hidden="true"></div>
+    {{ end }}
+
     <header class="sticky-header">
       <div class="header-container">
         {{ partial "header.html" . }}
